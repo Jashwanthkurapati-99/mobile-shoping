@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile - ShopEasy</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="main-header">
+
+        <div class="container header-container">
+
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html">ShopEasy</a>
+            </div>
+
+            <!-- Search -->
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search products..."
+                    autocomplete="off"
+                >
+
+                <button type="button" onclick="searchProducts()">
+                    🔍
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="categories.html">Categories</a>
+                <a href="cart.html">
+                    🛒 Cart
+                </a>
+                <a href="profile.html" class="active">
+                    👤 Profile
+                </a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= PROFILE PAGE ================= -->
+    <main class="profile-page">
+
+        <div class="container">
+
+            <!-- Page Title -->
+            <div class="page-header">
+                <h1>My Profile</h1>
+                <p>Manage your ShopEasy account</p>
+            </div>
+
+
+            <!-- ================= PROFILE CARD ================= -->
+            <section class="profile-section">
+
+                <div class="profile-card">
+
+                    <!-- Profile Header -->
+                    <div class="profile-header">
+
+                        <div class="profile-avatar">
+                            👤
+                        </div>
+
+                        <div class="profile-user-info">
+                            <h2 id="profileName">Customer</h2>
+                            <p id="profileEmail">
+                                customer@example.com
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Profile Details -->
+                    <div class="profile-details">
+
+                        <div class="profile-detail-item">
+                            <span class="detail-label">
+                                Full Name
+                            </span>
+
+                            <span
+                                class="detail-value"
+                                id="displayName"
+                            >
+                                Customer
+                            </span>
+                        </div>
+
+
+                        <div class="profile-detail-item">
+                            <span class="detail-label">
+                                Email
+                            </span>
+
+                            <span
+                                class="detail-value"
+                                id="displayEmail"
+                            >
+                                customer@example.com
+                            </span>
+                        </div>
+
+
+                        <div class="profile-detail-item">
+                            <span class="detail-label">
+                                Mobile Number
+                            </span>
+
+                            <span
+                                class="detail-value"
+                                id="displayMobile"
+                            >
+                                Not available
+                            </span>
+                        </div>
+
+
+                        <div class="profile-detail-item">
+                            <span class="detail-label">
+                                Account Type
+                            </span>
+
+                            <span
+                                class="detail-value"
+                                id="accountType"
+                            >
+                                Customer
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= ACCOUNT ACTIONS ================= -->
+
+                <div class="profile-actions">
+
+                    <h2>Account</h2>
+
+                    <a href="orders.html" class="profile-action">
+                        <div>
+                            <strong>📦 My Orders</strong>
+                            <p>View your previous orders</p>
+                        </div>
+
+                        <span>›</span>
+                    </a>
+
+
+                    <a href="tracking.html" class="profile-action">
+                        <div>
+                            <strong>🚚 Track Order</strong>
+                            <p>Check your delivery status</p>
+                        </div>
+
+                        <span>›</span>
+                    </a>
+
+
+                    <a href="cart.html" class="profile-action">
+                        <div>
+                            <strong>🛒 My Cart</strong>
+                            <p>View products added to your cart</p>
+                        </div>
+
+                        <span>›</span>
+                    </a>
+
+
+                    <a href="categories.html" class="profile-action">
+                        <div>
+                            <strong>🛍️ Shop Categories</strong>
+                            <p>Explore all product categories</p>
+                        </div>
+
+                        <span>›</span>
+                    </a>
+
+                </div>
+
+
+                <!-- ================= LOGOUT ================= -->
+
+                <div class="logout-section">
+
+                    <button
+                        type="button"
+                        class="logout-btn"
+                        onclick="logoutUser()"
+                    >
+                        Logout
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div class="footer-section">
+                    <h3>ShopEasy</h3>
+
+                    <p>
+                        Your simple and convenient online shopping
+                        platform.
+                    </p>
+                </div>
+
+
+                <div class="footer-section">
+
+                    <h3>Quick Links</h3>
+
+                    <a href="index.html">Home</a>
+                    <a href="products.html">Products</a>
+                    <a href="categories.html">Categories</a>
+                    <a href="orders.html">My Orders</a>
+
+                </div>
+
+
+                <div class="footer-section">
+
+                    <h3>Account</h3>
+
+                    <a href="profile.html">My Profile</a>
+                    <a href="login.html">Login</a>
+                    <a href="register.html">Register</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 ShopEasy. All Rights Reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="js/app.js"></script>
+
+    <script>
+
+        /*
+         * ==========================================
+         * LOAD USER PROFILE
+         * ==========================================
+         */
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            loadUserProfile();
+
+        });
+
+
+        function loadUserProfile() {
+
+            /*
+             * User information will be stored
+             * in localStorage after registration/login.
+             */
+
+            const userData =
+                JSON.parse(localStorage.getItem("user"));
+
+            if (!userData) {
+
+                /*
+                 * If user is not logged in,
+                 * redirect to login page.
+                 */
+
+                alert("Please login to view your profile.");
+
+                window.location.href = "login.html";
+
+                return;
+            }
+
+
+            /*
+             * Get user information
+             */
+
+            const name =
+                userData.fullName || "Customer";
+
+            const email =
+                userData.email || "Not available";
+
+            const mobile =
+                userData.mobile || "Not available";
+
+
+            /*
+             * Display user information
+             */
+
+            const profileName =
+                document.getElementById("profileName");
+
+            const profileEmail =
+                document.getElementById("profileEmail");
+
+            const displayName =
+                document.getElementById("displayName");
+
+            const displayEmail =
+                document.getElementById("displayEmail");
+
+            const displayMobile =
+                document.getElementById("displayMobile");
+
+
+            if (profileName) {
+                profileName.textContent = name;
+            }
+
+            if (profileEmail) {
+                profileEmail.textContent = email;
+            }
+
+            if (displayName) {
+                displayName.textContent = name;
+            }
+
+            if (displayEmail) {
+                displayEmail.textContent = email;
+            }
+
+            if (displayMobile) {
+                displayMobile.textContent = mobile;
+            }
+
+        }
+
+
+        /*
+         * ==========================================
+         * LOGOUT USER
+         * ==========================================
+         */
+
+        function logoutUser() {
+
+            const confirmLogout =
+                confirm("Are you sure you want to logout?");
+
+            if (!confirmLogout) {
+                return;
+            }
+
+
+            /*
+             * Remove login information
+             */
+
+            localStorage.removeItem("user");
+
+            localStorage.removeItem("isLoggedIn");
+
+
+            /*
+             * Redirect to login page
+             */
+
+            alert("You have been logged out successfully.");
+
+            window.location.href = "login.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

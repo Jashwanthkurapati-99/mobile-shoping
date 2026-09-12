@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Product - ShopEasy</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .add-product-page {
+            padding: 40px 0;
+            min-height: 80vh;
+        }
+
+        .add-product-container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .add-product-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .add-product-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .add-product-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .image-upload-box {
+            border: 2px dashed #bbb;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            background: #fafafa;
+        }
+
+        .image-upload-box:hover {
+            border-color: #333;
+        }
+
+        .image-upload-box input {
+            display: none;
+        }
+
+        .upload-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .upload-text {
+            font-size: 15px;
+            color: #555;
+        }
+
+        .image-preview {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .image-preview img {
+            max-width: 250px;
+            max-height: 250px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .remove-image {
+            display: none;
+            margin: 10px auto;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #e74c3c;
+            color: white;
+        }
+
+        .submit-product-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 7px;
+            background: #222;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .submit-product-btn:hover {
+            opacity: 0.9;
+        }
+
+        .required {
+            color: red;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .add-product-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="main-header">
+
+        <div class="container header-container">
+
+            <div class="logo">
+                <a href="index.html">ShopEasy</a>
+            </div>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search products..."
+                >
+
+                <button
+                    type="button"
+                    onclick="searchProducts()"
+                >
+                    🔍
+                </button>
+
+            </div>
+
+            <nav class="main-nav">
+
+                <a href="index.html">Home</a>
+
+                <a href="products.html">Products</a>
+
+                <a href="categories.html">Categories</a>
+
+                <a href="seller-dashboard.html">
+                    Seller Dashboard
+                </a>
+
+                <a href="profile.html">
+                    👤 Profile
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= ADD PRODUCT ================= -->
+
+    <main class="add-product-page">
+
+        <div class="container add-product-container">
+
+            <div class="add-product-header">
+
+                <h1>Add New Product</h1>
+
+                <p>
+                    Add your product details and upload a product image.
+                </p>
+
+            </div>
+
+
+            <!-- PRODUCT FORM -->
+
+            <form
+                id="addProductForm"
+                class="add-product-form"
+            >
+
+                <!-- Product Name -->
+
+                <div class="form-group">
+
+                    <label for="productName">
+                        Product Name
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productName"
+                        name="productName"
+                        placeholder="Enter product name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Category + Price -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="productCategory">
+                            Category
+                            <span class="required">*</span>
+                        </label>
+
+                        <select
+                            id="productCategory"
+                            name="productCategory"
+                            required
+                        >
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <option value="electronics">
+                                Electronics
+                            </option>
+
+                            <option value="clothing">
+                                Clothing
+                            </option>
+
+                            <option value="footwear">
+                                Footwear
+                            </option>
+
+                            <option value="accessories">
+                                Accessories
+                            </option>
+
+                            <option value="home-kitchen">
+                                Home & Kitchen
+                            </option>
+
+                            <option value="beauty">
+                                Beauty
+                            </option>
+
+                            <option value="sports">
+                                Sports
+                            </option>
+
+                            <option value="books">
+                                Books
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="productPrice">
+                            Price (₹)
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="productPrice"
+                            name="productPrice"
+                            placeholder="Enter price"
+                            min="1"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Stock + Rating -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="productStock">
+                            Stock Quantity
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="productStock"
+                            name="productStock"
+                            placeholder="Enter stock quantity"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="productRating">
+                            Rating
+                        </label>
+
+                        <input
+                            type="number"
+                            id="productRating"
+                            name="productRating"
+                            placeholder="Example: 4.5"
+                            min="0"
+                            max="5"
+                            step="0.1"
+                            value="0"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Description -->
+
+                <div class="form-group">
+
+                    <label for="productDescription">
+                        Product Description
+                        <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                        id="productDescription"
+                        name="productDescription"
+                        placeholder="Enter product description"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- ================= IMAGE UPLOAD ================= -->
+
+                <div class="form-group">
+
+                    <label>
+                        Product Image
+                        <span class="required">*</span>
+                    </label>
+
+                    <label
+                        for="productImage"
+                        class="image-upload-box"
+                    >
+
+                        <div class="upload-icon">
+                            📷
+                        </div>
+
+                        <div class="upload-text">
+
+                            <strong>
+                                Click to upload image
+                            </strong>
+
+                            <br>
+
+                            JPG, JPEG, PNG or WEBP
+
+                        </div>
+
+                        <input
+                            type="file"
+                            id="productImage"
+                            name="productImage"
+                            accept="image/jpeg,image/png,image/webp"
+                            required
+                        >
+
+                    </label>
+
+
+                    <!-- IMAGE PREVIEW -->
+
+                    <div
+                        class="image-preview"
+                        id="imagePreview"
+                    >
+
+                        <p>
+                            Image Preview
+                        </p>
+
+                        <img
+                            id="previewImage"
+                            src=""
+                            alt="Product Preview"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="removeImageBtn"
+                        class="remove-image"
+                        onclick="removeProductImage()"
+                    >
+                        Remove Image
+                    </button>
+
+                </div>
+
+
+                <!-- Submit -->
+
+                <button
+                    type="submit"
+                    class="submit-product-btn"
+                >
+                    Add Product
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div class="footer-section">
+
+                    <h3>ShopEasy</h3>
+
+                    <p>
+                        Your simple and convenient online
+                        shopping platform.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-section">
+
+                    <h3>Quick Links</h3>
+
+                    <a href="index.html">Home</a>
+
+                    <a href="products.html">Products</a>
+
+                    <a href="categories.html">Categories</a>
+
+                    <a href="orders.html">My Orders</a>
+
+                </div>
+
+
+                <div class="footer-section">
+
+                    <h3>Seller</h3>
+
+                    <a href="seller-dashboard.html">
+                        Dashboard
+                    </a>
+
+                    <a href="add-product.html">
+                        Add Product
+                    </a>
+
+                    <a href="manage-products.html">
+                        Manage Products
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 ShopEasy. All Rights Reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="js/app.js"></script>
+
+    <script>
+
+        /*
+         * ==========================================
+         * IMAGE PREVIEW
+         * ==========================================
+         */
+
+        const productImage =
+            document.getElementById("productImage");
+
+        const imagePreview =
+            document.getElementById("imagePreview");
+
+        const previewImage =
+            document.getElementById("previewImage");
+
+        const removeImageBtn =
+            document.getElementById("removeImageBtn");
+
+
+        productImage.addEventListener(
+            "change",
+            function () {
+
+                const file = this.files[0];
+
+                if (!file) {
+                    return;
+                }
+
+
+                /*
+                 * Check file type
+                 */
+
+                if (!file.type.startsWith("image/")) {
+
+                    alert("Please select an image file.");
+
+                    this.value = "";
+
+                    return;
+                }
+
+
+                /*
+                 * Check file size
+                 * Maximum = 5 MB
+                 */
+
+                if (file.size > 5 * 1024 * 1024) {
+
+                    alert(
+                        "Image size should be less than 5 MB."
+                    );
+
+                    this.value = "";
+
+                    return;
+                }
+
+
+                /*
+                 * Create temporary preview
+                 */
+
+                const imageURL =
+                    URL.createObjectURL(file);
+
+                previewImage.src = imageURL;
+
+                imagePreview.style.display = "block";
+
+                removeImageBtn.style.display = "block";
+
+            }
+        );
+
+
+        /*
+         * ==========================================
+         * REMOVE IMAGE
+         * ==========================================
+         */
+
+        function removeProductImage() {
+
+            productImage.value = "";
+
+            previewImage.src = "";
+
+            imagePreview.style.display = "none";
+
+            removeImageBtn.style.display = "none";
+
+        }
+
+
+        /*
+         * ==========================================
+         * ADD PRODUCT
+         * ==========================================
+         */
+
+        document
+            .getElementById("addProductForm")
+            .addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const name =
+                        document.getElementById(
+                            "productName"
+                        ).value.trim();
+
+                    const category =
+                        document.getElementById(
+                            "productCategory"
+                        ).value;
+
+                    const price =
+                        Number(
+                            document.getElementById(
+                                "productPrice"
+                            ).value
+                        );
+
+                    const stock =
+                        Number(
+                            document.getElementById(
+                                "productStock"
+                            ).value
+                        );
+
+                    const rating =
+                        Number(
+                            document.getElementById(
+                                "productRating"
+                            ).value
+                        );
+
+                    const description =
+                        document.getElementById(
+                            "productDescription"
+                        ).value.trim();
+
+                    const imageFile =
+                        productImage.files[0];
+
+
+                    /*
+                     * Make sure image is selected
+                     */
+
+                    if (!imageFile) {
+
+                        alert(
+                            "Please upload a product image."
+                        );
+
+                        return;
+                    }
+
+
+                    /*
+                     * Create product object
+                     */
+
+                    const product = {
+
+                        id: Date.now(),
+
+                        name: name,
+
+                        category: category,
+
+                        price: price,
+
+                        stock: stock,
+
+                        rating: rating,
+
+                        reviews: 0,
+
+                        description: description,
+
+                        image: imageFile.name
+
+                    };
+
+
+                    /*
+                     * Get existing seller products
+                     */
+
+                    const sellerProducts =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "sellerProducts"
+                            )
+                        ) || [];
+
+
+                    /*
+                     * Add new product
+                     */
+
+                    sellerProducts.push(product);
+
+
+                    /*
+                     * Save product data
+                     */
+
+                    localStorage.setItem(
+                        "sellerProducts",
+                        JSON.stringify(
+                            sellerProducts
+                        )
+                    );
+
+
+                    alert(
+                        "Product added successfully!"
+                    );
+
+
+                    /*
+                     * Go to seller dashboard
+                     */
+
+                    window.location.href =
+                        "seller-dashboard.html";
+
+                }
+            );
+
+    </script>
+
+</body>
+</html>
